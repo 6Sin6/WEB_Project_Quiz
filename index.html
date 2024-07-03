@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles */
+        body {
+            background-image: url('quiz_background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            animation: fadeIn 1s ease-in-out;
+            transition: background-color 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto">
+        <!-- Main Menu -->
+        <div id="main-menu" class="text-center text-white">
+            <h1 class="text-4xl mb-10">Welcome to the Online Quiz System</h1>
+            <button onclick="showPlayQuizzes()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Play Quizzes
+            </button>
+            <button onclick="showCreateQuizMenu()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg mt-4">
+                Create Quiz
+            </button>
+        </div>
+
+        <!-- Play Quizzes -->
+        <div id="play-quizzes" class="hidden">
+            <h2 class="text-3xl mb-5 text-white">Select a Quiz to Play</h2>
+            <div id="quiz-list" class="space-y-4">
+                <!-- Quizzes will be dynamically inserted here -->
+            </div>
+            <button onclick="showMainMenu()" class="mt-5 bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Back
+            </button>
+        </div>
+
+        <!-- Create Quiz Menu -->
+        <div id="create-quiz-menu" class="hidden">
+            <h2 class="text-3xl mb-5 text-white">Create or Edit a Quiz</h2>
+            <button onclick="showNewQuizForm()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Add New Quiz
+            </button>
+            <button onclick="showEditQuizList()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg mt-4">
+                Edit Existing Quiz
+            </button>
+            <button onclick="showMainMenu()" class="mt-5 bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Back
+            </button>
+        </div>
+
+        <!-- New Quiz Form -->
+        <div id="new-quiz-form" class="hidden">
+            <h2 class="text-3xl mb-5 text-white">Create a New Quiz</h2>
+            <form id="quiz-form">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="quiz-title">
+                        Quiz Title
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="quiz-title" type="text" placeholder="Enter quiz title">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="quiz-description">
+                        Quiz Description
+                    </label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="quiz-description" placeholder="Enter quiz description"></textarea>
+                </div>
+                <div class="mb-4">
+                    <button type="button" onclick="addQuestion()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                        Add Question
+                    </button>
+                </div>
+                <div id="questions-list" class="mb-4">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                    Save Quiz
+                </button>
+            </form>
+            <button onclick="showCreateQuizMenu()" class="mt-5 bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Back
+            </button>
+        </div>
+
+        <!-- Edit Quiz List -->
+        <div id="edit-quiz-list" class="hidden">
+            <h2 class="text-3xl mb-5 text-white">Select a Quiz to Edit</h2>
+            <div id="edit-quiz-list-content" class="space-y-4">
+                <!-- Quizzes will be dynamically inserted here -->
+            </div>
+            <button onclick="showCreateQuizMenu()" class="mt-5 bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg">
+                Back
+            </button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
